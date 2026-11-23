@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Pesquise filmes e séries no MasterCine.">
+  <title>Pesquisa | MasterCine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/detalhes.css">
+  <script src="js/pesquisa.js" defer></script>
+</head>
+<body>
+  <div class="container-principal">
+    <header class="header cabecalho">
+      <a class="logo logo-link cabecalho__logo" href="index.html">MASTERCINE</a>
+      <nav class="header-navegacao cabecalho__navegacao" aria-label="Navegação principal">
+        <ul class="header-menu cabecalho__menu">
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="index.html" aria-label="Início"><i class="fa-solid fa-house"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link cabecalho__link--ativo" href="pesquisa.html" aria-label="Pesquisar" aria-current="page"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="favoritos.html" aria-label="Favoritos"><i class="fa-solid fa-heart"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="sobre.html" aria-label="Sobre"><i class="fa-solid fa-circle-info"></i></a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main pagina-pesquisa pesquisa">
+      <section class="pesquisa-cabecalho pesquisa__cabecalho">
+
+        <h1 class="pesquisa__titulo">Pesquisar filmes e séries</h1>
+        <form id="form-pesquisa" class="pesquisa-form pesquisa__form">
+          <i class="fa-solid fa-magnifying-glass pesquisa__icone"></i>
+          <input id="pesquisa-input" class="pesquisa__input" type="search" placeholder="Buscar filmes e séries..." autocomplete="off" aria-label="Buscar filmes e séries">
+          <button type="submit" class="pesquisa__botao">Pesquisar</button>
+        </form>
+        <p id="pesquisa-legenda" class="pesquisa-legenda pesquisa__legenda"></p>
+      </section>
+      <section id="pesquisa-resultados" class="pesquisa-grid pesquisa__grade" aria-live="polite">
+        <p class="estado">Carregando resultados...</p>
+      </section>
+    </main>
+    <footer class="footer rodape">
+      <p class="rodape__texto">© 2026 MasterCine. Todos os direitos reservados.</p>
+      <p class="rodape__aviso">Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.</p>
+    </footer>
+  </div>
+</body>
+</html>

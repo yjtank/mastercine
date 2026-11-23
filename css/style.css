@@ -1,0 +1,757 @@
+/* MasterCine — estilos globais. Componentes seguem BEM (bloco__elemento--modificador). */
+:root {
+  --cor-fundo: #050505;
+  --cor-superficie: #111;
+  --cor-superficie-2: #191919;
+  --cor-primaria: #ffc107;
+  --cor-texto: #f5f5f5;
+  --cor-texto-claro: #ddd;
+  --cor-muted: #999;
+  --largura-conteudo: 1500px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #555 #080808;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+body,
+button,
+input,
+select {
+  font-family: Arial, Helvetica, sans-serif;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+}
+img {
+  max-width: 100%;
+}
+.hidden {
+  display: none !important;
+}
+.container-principal,
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header,
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 17px max(22px, calc((100vw - var(--largura-conteudo)) / 2));
+  background: rgba(5, 5, 5, 0.94);
+  border-bottom: 1px solid #ffffff12;
+  backdrop-filter: blur(16px);
+}
+.logo,
+.marca {
+  margin: 0;
+  color: var(--cor-primaria);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+.logo-link {
+  text-decoration: none;
+}
+.header-navegacao {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.header-item a,
+.cabecalho__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #eee;
+  text-decoration: none;
+  border: 1px solid #ffffff20;
+  border-radius: 50%;
+  background: #ffffff08;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.header-item a:hover,
+.header-item a:focus-visible,
+.cabecalho__link:hover,
+.cabecalho__link:focus-visible {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  background: #ffc10712;
+  outline: none;
+}
+.cabecalho__link--ativo,
+.cabecalho__link[aria-current="page"] {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  background: #ffc10712;
+}
+.main,
+.conteudo-principal {
+  flex: 1;
+  width: min(100%, var(--largura-conteudo));
+  margin: 0 auto;
+  padding: 0 22px;
+}
+.footer,
+.rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 28px 20px;
+  margin-top: 45px;
+  border-top: 1px solid #ffffff12;
+  color: #888;
+  text-align: center;
+  font-size: 11px;
+}
+.footer p,
+.rodape p {
+  margin: 0;
+}
+.search-bar {
+  position: absolute;
+  z-index: 60;
+  top: 74px;
+  right: 22px;
+  width: min(420px, calc(100vw - 32px));
+  padding: 12px;
+  border: 1px solid #ffffff20;
+  border-radius: 9px;
+  background: #171717;
+  box-shadow: 0 15px 40px #000b;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: 0.2s;
+}
+.search-bar.aberto {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.search-bar input {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  border: 1px solid #ffffff20;
+  border-radius: 6px;
+  background: #090909;
+  outline: none;
+}
+.search-bar input:focus {
+  border-color: var(--cor-primaria);
+}
+.search-results {
+  position: absolute;
+  z-index: 61;
+  top: 135px;
+  right: 22px;
+  width: min(420px, calc(100vw - 32px));
+  max-height: 65vh;
+  overflow: auto;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: #151515;
+}
+.search-results.ativo {
+  padding: 12px;
+}
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: #0009;
+  opacity: 0;
+  visibility: hidden;
+}
+.search-backdrop.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+.estado {
+  width: 100%;
+  padding: 24px;
+  color: #999;
+  text-align: center;
+}
+.sessao-slides {
+  margin: 20px 0 35px;
+}
+.slides-container {
+  position: relative;
+  min-height: clamp(330px, 43vw, 570px);
+  overflow: hidden;
+  border-radius: 12px;
+  background: #141414;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(25px, 5vw, 70px);
+  background: #171717 center/cover no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.55s;
+}
+.slide::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, #050505ed 0%, #050505a8 52%, #05050520 100%),
+    linear-gradient(0deg, #050505aa, transparent 65%);
+}
+.slide.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+.slide-conteudo {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 650px);
+}
+.slide-selo {
+  color: var(--cor-primaria);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.slide-titulo {
+  margin: 10px 0;
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 1.05;
+}
+.slide-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: #ddd;
+  font-size: 13px;
+}
+.slide-nota {
+  color: var(--cor-primaria);
+}
+.slide-descricao {
+  max-width: 580px;
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.slide-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.slide-botao {
+  padding: 12px 19px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--cor-primaria);
+  color: #111;
+  font-weight: 800;
+}
+.slide-botao:hover,
+.slide-botao:focus-visible {
+  filter: brightness(1.1);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.slide-controles {
+  position: absolute;
+  z-index: 3;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.slide-seta {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  background: #111b;
+  color: #fff;
+}
+.slide-seta:hover {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+}
+.indicadores {
+  display: flex;
+  gap: 7px;
+}
+.indicador {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: #ffffff70;
+}
+.indicador.ativo {
+  width: 22px;
+  background: var(--cor-primaria);
+}
+.barra-progresso {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #ffffff20;
+}
+.barra-progresso.animando::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: var(--cor-primaria);
+  transform-origin: left;
+  animation: progresso 6s linear;
+}
+@keyframes progresso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.sessao-filmes,
+.sessao-series {
+  margin: 32px 0;
+}
+.titulo-sessao {
+  margin: 0 0 15px;
+  color: var(--cor-primaria);
+  font-size: 21px;
+  font-weight: 800;
+}
+/* Flexbox mantém os catálogos em trilhos horizontais com rolagem lateral. */
+.filmes-container,
+.series-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 3px 2px 15px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cor-primaria) transparent;
+}
+.filmes-container::-webkit-scrollbar,
+.series-container::-webkit-scrollbar {
+  height: 5px;
+}
+.filmes-container::-webkit-scrollbar-thumb,
+.series-container::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+  border-radius: 8px;
+}
+.filme,
+.serie {
+  position: relative;
+  flex: 0 0 155px;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 9px;
+  background: transparent;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
+}
+.filme:hover,
+.serie:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.1);
+}
+.poster-wrap {
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #202020;
+}
+.poster-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-dados {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 3px 0 0;
+}
+.card-textos {
+  flex: 1;
+  min-width: 0;
+}
+.card-dados .ano-lancamento {
+  margin: 0;
+}
+.card-dados .avaliacao {
+  color: #ddd;
+}
+.card-dados .avaliacao i {
+  color: #aaa;
+}
+.titulo-filme {
+  display: block;
+  overflow: hidden;
+  min-width: 0;
+  color: #f5f5f5;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ano-lancamento {
+  margin: 0;
+  color: #888;
+  font-size: 11px;
+}
+.avaliacao {
+  flex: 0 0 auto;
+  color: var(--cor-primaria);
+  font-size: 11px;
+}
+.resultados-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.resultado-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  text-align: left;
+}
+.resultado-item:hover {
+  background: #ffffff12;
+}
+.resultado-item img {
+  width: 42px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.resultado-texto {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+.resultado-texto small {
+  color: #999;
+}
+.resultado-nota {
+  color: var(--cor-primaria);
+  font-size: 12px;
+}
+.pagina-pesquisa {
+  min-height: 70vh;
+}
+.pesquisa-cabecalho {
+  max-width: 1000px;
+  margin: 35px auto 25px;
+}
+.pesquisa-cabecalho h1 {
+  margin: 8px 0 20px;
+  color: #fff;
+  font-size: clamp(25px, 4vw, 36px);
+}
+.pesquisa-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 9px 7px 16px;
+  border: 1px solid #ffffff24;
+  border-radius: 9px;
+  background: #141414;
+}
+.pesquisa-form > i {
+  color: #999;
+}
+.pesquisa-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  background: transparent;
+}
+.pesquisa-form input::placeholder {
+  color: #888;
+}
+.pesquisa-form button {
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 6px;
+  color: #111;
+  background: var(--cor-primaria);
+  font-weight: 700;
+}
+.pesquisa-legenda {
+  min-height: 18px;
+  margin: 12px 0 0;
+  color: #999;
+  font-size: 12px;
+}
+/* CSS Grid organiza os resultados da pesquisa em colunas que se adaptam à largura disponível. */
+.pesquisa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 22px 16px;
+  padding: 10px 0 35px;
+}
+.pesquisa-grid .filme,
+.pesquisa-grid .serie {
+  width: 100%;
+  height: auto;
+}
+.pesquisa-grid .filme,
+.pesquisa-grid .serie {
+  min-width: 0;
+}
+:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+/* Responsividade desktop: amplia espaçamentos e largura dos cards em telas maiores que 768px. */
+@media screen and (min-width: 769px) {
+  .header,
+  .cabecalho {
+    padding-right: max(32px, calc((100vw - var(--largura-conteudo)) / 2));
+    padding-left: max(32px, calc((100vw - var(--largura-conteudo)) / 2));
+  }
+  .main,
+  .conteudo-principal {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .filme,
+  .serie {
+    flex-basis: 170px;
+  }
+}
+/* Responsividade tablet: ajusta cabeçalho, conteúdo, slider e cards até 768px. */
+@media screen and (max-width: 768px) {
+  .header,
+  .cabecalho {
+    padding: 14px 18px;
+  }
+  .main,
+  .conteudo-principal {
+    padding: 0 17px;
+  }
+  .slides-container {
+    min-height: 390px;
+  }
+  .slide {
+    padding: 28px;
+  }
+  .slide-titulo {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+  .filme,
+  .serie {
+    flex-basis: 140px;
+  }
+  .titulo-sessao {
+    font-size: 19px;
+  }
+  .footer,
+  .rodape {
+    margin-top: 30px;
+  }
+}
+/* Responsividade mobile: reorganiza navegação, catálogo e pesquisa em telas pequenas. */
+@media screen and (max-width: 480px) {
+  .header,
+  .cabecalho {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+  .logo,
+  .marca {
+    font-size: 20px;
+  }
+  .header-item a {
+    width: 38px;
+    height: 38px;
+  }
+  .main,
+  .conteudo-principal {
+    padding: 0 13px;
+  }
+  .slides-container {
+    min-height: 390px;
+    border-radius: 8px;
+  }
+  .slide {
+    padding: 22px 18px 65px;
+  }
+  .slide-descricao {
+    font-size: 12px;
+  }
+  .slide-controles {
+    right: 14px;
+    bottom: 15px;
+  }
+  .filme,
+  .serie {
+    flex-basis: 125px;
+  }
+  .sessao-filmes,
+  .sessao-series {
+    margin: 25px 0;
+  }
+  .titulo-sessao {
+    font-size: 17px;
+  }
+  .pesquisa-form {
+    gap: 8px;
+    padding-left: 10px;
+  }
+  .pesquisa-form button {
+    padding: 10px;
+  }
+  .pesquisa-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 12px;
+  }
+  .footer,
+  .rodape {
+    padding: 22px 14px;
+    font-size: 10px;
+  }
+}
+/* Aliases BEM para os componentes globais. As classes antigas são mantidas para compatibilidade dos scripts existentes. */
+.cabecalho__navegacao {
+  display: flex;
+  align-items: center;
+}
+.cabecalho__menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cabecalho__item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.destaque {
+  position: relative;
+}
+.destaque__slide {
+  position: absolute;
+  inset: 0;
+}
+.destaque__conteudo {
+  position: relative;
+  z-index: 1;
+}
+.destaque__titulo {
+  line-height: 1.05;
+}
+.catalogo__lista {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+.catalogo-card__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cabecalho__logo {
+  text-decoration: none;
+}
+.slides__container {
+  position: relative;
+}
+.slide__conteudo {
+  position: relative;
+  z-index: 2;
+}
+.rodape__texto,
+.rodape__aviso {
+  margin: 0;
+}
+.pesquisa__form {
+  display: flex;
+}
+.pesquisa__input {
+  flex: 1;
+}

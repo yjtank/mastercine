@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Conheça o projeto MasterCine.">
+  <title>Sobre | MasterCine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sobre.css">
+</head>
+<body>
+  <div class="container-principal">
+    <header class="header cabecalho">
+      <a class="logo logo-link cabecalho__logo" href="index.html">MASTERCINE</a>
+      <nav class="header-navegacao cabecalho__navegacao" aria-label="Navegação principal">
+        <ul class="header-menu cabecalho__menu">
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="index.html" aria-label="Início"><i class="fa-solid fa-house"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="pesquisa.html" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="favoritos.html" aria-label="Favoritos"><i class="fa-solid fa-heart"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link cabecalho__link--ativo" href="sobre.html" aria-label="Sobre" aria-current="page"><i class="fa-solid fa-circle-info"></i></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Conteúdo institucional: apresenta o objetivo, os recursos e as tecnologias do projeto. -->
+    <main class="sobre-main sobre">
+      <header class="sobre-cabecalho sobre__cabecalho">
+        <h1 class="sobre__titulo">Sobre o MasterCine</h1>
+        <p class="sobre__descricao">Um espaço para descobrir filmes e séries, conhecer novas histórias e organizar o que você deseja assistir.</p>
+      </header>
+
+      <section class="sobre-secao sobre__secao">
+        <h2 class="sobre__subtitulo">O projeto</h2>
+        <p class="sobre__texto">O MasterCine é um catálogo de filmes e séries desenvolvido para reunir informações sobre diferentes títulos em uma única interface. A página inicial apresenta conteúdos populares e categorias; a pesquisa permite encontrar títulos pelo nome; e a página de detalhes reúne informações como sinopse, elenco, trailer e episódios de séries.</p>
+      </section>
+
+      <section class="sobre-secao sobre__secao">
+        <h2 class="sobre__subtitulo">Recursos</h2>
+        <ul class="sobre-lista sobre__lista">
+          <li class="sobre__item">Catálogo dinâmico de filmes e séries.</li>
+          <li class="sobre__item">Pesquisa de títulos pelo nome.</li>
+          <li class="sobre__item">Informações detalhadas, elenco e trailers.</li>
+          <li class="sobre__item">Temporadas e episódios de séries.</li>
+          <li class="sobre__item">Lista de favoritos salva no próprio navegador.</li>
+        </ul>
+      </section>
+
+      <section class="sobre-secao sobre__secao">
+        <h2 class="sobre__subtitulo">Tecnologias</h2>
+        <p class="sobre__texto">O projeto utiliza HTML5 para estruturar as páginas, CSS3 para a apresentação e responsividade, JavaScript para as interações e a API do TMDB para consultar os dados de filmes e séries. O recurso de favoritos utiliza o armazenamento local do navegador (<code>localStorage</code>).</p>
+      </section>
+
+      <footer class="sobre-creditos sobre__creditos">
+        <p class="sobre__credito-item">Os dados de filmes e séries são fornecidos pelo TMDB.</p>
+        <p class="sobre__credito-item">Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.</p>
+      </footer>
+    </main>
+
+    <footer class="footer rodape">
+      <p class="rodape__texto">© 2026 MasterCine. Todos os direitos reservados.</p>
+      <p class="rodape__aviso">Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.</p>
+    </footer>
+  </div>
+</body>
+</html>

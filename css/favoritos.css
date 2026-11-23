@@ -1,0 +1,148 @@
+/* Grade de favoritos: os cards ficam sem painel de fundo; só o pôster e os dados aparecem. */
+.favoritos-main {
+  width: min(100% - 44px, 1250px);
+  margin: 0 auto;
+  padding: 14px 0 35px;
+  flex: 1;
+}
+.favoritos-titulo {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(27px, 4vw, 36px);
+  font-weight: 700;
+  text-align: left;
+}
+.favoritos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 22px 16px;
+  align-items: start;
+}
+.favorito-card {
+  min-width: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.favorito-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.favorito-card__poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 9px;
+  background: #202020;
+}
+.favorito-card__titulo {
+  overflow: hidden;
+  margin: 8px 0 5px;
+  color: #f5f5f5;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.favorito-card__dados {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.favorito-card__ano {
+  color: #999;
+  font-size: 11px;
+}
+.favorito-card__avaliacao {
+  flex: 0 0 auto;
+  color: #ddd;
+  font-size: 11px;
+}
+.favorito-card__avaliacao i {
+  color: #aaa;
+}
+.favorito-card__remover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  padding: 7px 11px;
+  border: 1px solid #ffffff35;
+  border-radius: 5px;
+  background: #1b1b1b;
+  color: #e5e5e5;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.favorito-card__remover:hover {
+  color: #fff;
+  border-color: var(--cor-primaria);
+  background: #29230f;
+}
+.favoritos-vazio {
+  grid-column: 1/-1;
+  justify-self: center;
+  width: min(100%, 520px);
+  padding: 48px 22px;
+  color: #aaa;
+  text-align: center;
+}
+.favoritos-vazio i {
+  display: block;
+  margin-bottom: 14px;
+  color: #888;
+  font-size: 25px;
+}
+.favoritos-vazio strong {
+  display: block;
+  color: #eee;
+  font-size: 17px;
+  font-weight: 600;
+}
+.favoritos-vazio p {
+  margin: 9px 0 0;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.favoritos-vazio a {
+  display: inline-block;
+  margin-top: 17px;
+  color: #eee;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* Em telas médias, reduz os espaçamentos da grade. */
+@media screen and (max-width: 768px) {
+  .favoritos-main {
+    width: calc(100% - 36px);
+    padding: 14px 0 28px;
+  }
+  .favoritos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 19px 13px;
+  }
+}
+/* Em celulares, mantém dois cards por linha. */
+@media screen and (max-width: 480px) {
+  .favoritos-main {
+    width: calc(100% - 28px);
+    padding: 12px 0 24px;
+  }
+  .favoritos-titulo {
+    margin-bottom: 14px;
+  }
+  .favoritos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 12px;
+  }
+}

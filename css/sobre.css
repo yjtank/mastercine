@@ -1,0 +1,112 @@
+/* Página Sobre: composição editorial simples, sem cartões ou efeitos decorativos. */
+.sobre-main {
+  width: min(100% - 44px, 900px);
+  margin: 0 auto;
+  padding: 58px 0 30px;
+}
+.sobre-cabecalho {
+  padding: 0 0 30px;
+  border-bottom: 1px solid #303030;
+}
+.sobre-cabecalho h1 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
+.sobre-cabecalho p {
+  max-width: 680px;
+  margin: 0;
+  color: #b8b8b8;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.sobre-secao {
+  padding: 27px 0;
+  border-bottom: 1px solid #303030;
+}
+.sobre-secao h2 {
+  margin: 0 0 13px;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+}
+.sobre-secao p {
+  max-width: 820px;
+  margin: 0;
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.sobre-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sobre-lista li {
+  position: relative;
+  padding-left: 17px;
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.sobre-lista li::before {
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #888;
+  content: "";
+}
+.sobre-creditos {
+  padding: 22px 0 5px;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.sobre-creditos p {
+  margin: 0 0 5px;
+}
+.sobre-main code {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #181818;
+  color: #ddd;
+}
+/* Em tablets, reduz as margens e distribui os itens em duas colunas. */
+@media screen and (max-width: 768px) {
+  .sobre-main {
+    width: calc(100% - 36px);
+    padding-top: 40px;
+  }
+  .sobre-lista {
+    gap: 10px 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .sobre-main {
+    width: calc(100% - 28px);
+    padding-top: 30px;
+  }
+  .sobre-cabecalho {
+    padding-bottom: 23px;
+  }
+  .sobre-cabecalho p,
+  .sobre-secao p,
+  .sobre-lista li {
+    font-size: 13px;
+  }
+  .sobre-secao {
+    padding: 22px 0;
+  }
+  .sobre-lista {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+}

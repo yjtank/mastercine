@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="MasterCine — filmes e séries em destaque.">
+  <title>MasterCine | Filmes e Séries</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="container-principal">
+    <header class="header cabecalho">
+      <a class="logo logo-link cabecalho__logo" href="index.html">MASTERCINE</a>
+      <nav class="header-navegacao cabecalho__navegacao" aria-label="Navegação principal">
+        <ul class="header-menu cabecalho__menu">
+          <li class="header-item cabecalho__item"><a class="cabecalho__link cabecalho__link--ativo" href="index.html" aria-label="Início" aria-current="page"><i class="fa-solid fa-house"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="pesquisa.html" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="favoritos.html" aria-label="Favoritos"><i class="fa-solid fa-heart"></i></a></li>
+          <li class="header-item cabecalho__item"><a class="cabecalho__link" href="sobre.html" aria-label="Sobre"><i class="fa-solid fa-circle-info"></i></a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+    <main class="main">
+      <section class="sessao-slides slides">
+        <div class="slides-container slides__container">
+          <div class="slide ativo slide--ativo"><div class="slide-conteudo slide__conteudo"><span class="slide-selo slide__selo">MASTERCINE</span><h2 class="slide-titulo slide__titulo">Descubra seu próximo favorito</h2><p class="slide-descricao slide__descricao">Os filmes e séries que estão em alta, em um só lugar.</p></div></div>
+          <div class="slide"></div><div class="slide"></div>
+          <div class="slide-controles slides__controles"><div class="indicadores slides__indicadores"></div></div>
+          <div class="barra-progresso slides__barra-progresso"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer rodape">
+      <p class="rodape__texto">© 2026 MasterCine. Todos os direitos reservados.</p>
+      <p class="rodape__aviso">Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.</p>
+    </footer>
+  </div>
+</body>
+</html>
