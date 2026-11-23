@@ -1,488 +1,25 @@
+/* ==========================================================================
+   MasterCine — Estilos da Página de Detalhes
+   Metodologia BEM e Responsividade Completa (Mobile 375px, Tablet 768px, Desktop 1366px)
+   ========================================================================== */
+
 .logo-link {
   text-decoration: none;
 }
-.header-item a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+
 .detalhes-main {
-  max-width: 1500px;
+  width: min(100%, 1366px);
   min-height: 70vh;
   margin: 0 auto;
-  padding: 20px;
-}
-.voltar-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin: 4px 0 18px;
-  color: #f5f5f5;
-  text-decoration: none;
-  font-size: 14px;
-}
-.voltar-home:hover {
-  color: var(--cor-primaria);
-}
-.detalhes-status {
-  padding: 35px 15px;
-  color: var(--cor-texto-claro);
-  text-align: center;
-}
-.detalhe-hero {
-  min-height: 500px;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #171717 center/cover no-repeat;
-  isolation: isolate;
-}
-.detalhe-hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.96),
-      rgba(0, 0, 0, 0.76) 48%,
-      rgba(0, 0, 0, 0.24)
-    ),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent 65%);
-}
-.detalhe-hero-conteudo {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  gap: 34px;
-  padding: clamp(25px, 5vw, 65px);
-}
-.detalhe-poster-wrap {
-  flex: 0 0 220px;
-}
-.detalhe-poster {
-  display: block;
-  width: 100%;
-  border-radius: 9px;
-  box-shadow: 0 12px 35px #0009;
-}
-.detalhe-textos {
-  max-width: 780px;
-  padding-bottom: 8px;
-}
-.detalhe-selo {
-  color: var(--cor-primaria);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-.detalhe-textos h1 {
-  margin: 10px 0;
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 1.05;
-}
-.detalhe-tagline {
-  color: #ddd;
-  font-style: italic;
-  margin: 0 0 15px;
-}
-.detalhe-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  color: #eee;
-  font-size: 13px;
-}
-.detalhe-meta strong {
-  color: var(--cor-primaria);
-}
-.detalhe-generos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 17px 0;
-}
-.detalhe-generos span {
-  padding: 6px 11px;
-  border: 1px solid #ffffff55;
-  border-radius: 20px;
-  font-size: 12px;
-  color: #fff;
-}
-.detalhe-sinopse {
-  max-width: 720px;
-  color: #eee;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.detalhe-acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-.detalhe-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 11px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
-}
-.detalhe-btn-principal {
-  color: #111;
-  background: var(--cor-primaria);
-}
-.detalhe-btn-secundario {
-  color: #fff;
-  background: #ffffff20;
-  border: 1px solid #ffffff55;
-  cursor: pointer;
-  font: inherit;
-  font-size: 13px;
-  font-weight: bold;
-}
-.detalhe-btn--favorito-ativo {
-  color: var(--cor-primaria);
-  border-color: var(--cor-primaria);
-  background: #ffc10718;
-}
-.detalhe-btn-favorito:hover {
-  border-color: var(--cor-primaria);
-  color: var(--cor-primaria);
-}
-.detalhe-secao {
-  margin: 35px 0;
-}
-.detalhe-titulo-secao {
-  color: var(--cor-primaria);
-  font-size: 20px;
-  margin: 0 0 16px;
-}
-.trailer-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 650px;
-  background: #111;
-  border-radius: 9px;
-  overflow: hidden;
-}
-.trailer-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-.elenco-lista {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  padding: 4px 2px 14px;
-}
-.ator-card {
-  flex: 0 0 130px;
-  overflow: hidden;
-  border-radius: 7px;
-  background: #181818;
-}
-.ator-card img {
-  width: 100%;
-  height: 175px;
-  display: block;
-  object-fit: cover;
-}
-.ator-info {
-  padding: 9px;
-}
-.ator-nome {
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-}
-.ator-personagem {
-  margin-top: 5px;
-  color: #aaa;
-  font-size: 11px;
-}
-.informacoes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-}
-.info-item {
-  padding: 15px;
-  background: #151515;
-  border-left: 2px solid var(--cor-primaria);
-  border-radius: 4px;
-}
-.info-item span {
-  display: block;
-  color: #999;
-  font-size: 11px;
-  margin-bottom: 7px;
-  text-transform: uppercase;
-}
-.info-item strong {
-  color: #f5f5f5;
-  font-size: 14px;
-}
-/* Media queries abaixo reorganizam a ficha de detalhes em tablets e celulares. */
-#detalhe-recomendacoes .filme,
-#detalhe-recomendacoes .serie {
-  flex: 0 0 150px;
-}
-@media (max-width: 700px) {
-  .detalhes-main {
-    padding: 13px;
-  }
-  .detalhe-hero {
-    min-height: 0;
-  }
-  .detalhe-hero-conteudo {
-    align-items: flex-start;
-    gap: 17px;
-    padding: 22px 16px;
-  }
-  .detalhe-poster-wrap {
-    flex-basis: 115px;
-  }
-  .detalhe-textos h1 {
-    font-size: 28px;
-  }
-  .detalhe-tagline {
-    font-size: 12px;
-  }
-  .detalhe-meta {
-    gap: 9px;
-    font-size: 11px;
-  }
-  .detalhe-sinopse {
-    font-size: 12px;
-    line-height: 1.55;
-  }
-  .detalhe-generos {
-    gap: 5px;
-    margin: 11px 0;
-  }
-  .detalhe-generos span {
-    padding: 5px 8px;
-    font-size: 10px;
-  }
-  .detalhe-acoes {
-    gap: 7px;
-    margin-top: 13px;
-  }
-  .detalhe-btn {
-    padding: 9px 10px;
-    font-size: 11px;
-  }
-}
-@media (max-width: 430px) {
-  .detalhe-hero-conteudo {
-    display: block;
-  }
-  .detalhe-poster-wrap {
-    float: left;
-    width: 105px;
-    margin: 0 15px 12px 0;
-  }
-  .detalhe-textos h1 {
-    font-size: 26px;
-  }
-  .detalhe-sinopse {
-    clear: both;
-    padding-top: 10px;
-  }
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-/* Elenco em trilho com retratos circulares e navegação por setas */
-.elenco-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-}
-.elenco-lista {
-  display: flex;
-  align-items: flex-start;
-  gap: 22px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 8px 4px 12px;
-  flex: 1;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-}
-.elenco-lista::-webkit-scrollbar {
-  display: none;
-}
-.ator-card {
-  flex: 0 0 104px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: visible;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-  scroll-snap-align: start;
-}
-.ator-card img {
-  width: 82px;
-  height: 82px;
-  display: block;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ffffff18;
-  background: #222;
-}
-.ator-info {
-  padding: 9px 0 0;
-  width: 100%;
-}
-.ator-nome {
-  color: #f5f5f5;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1.35;
-}
-.ator-personagem {
-  margin-top: 4px;
-  color: #999;
-  font-size: 11px;
-  line-height: 1.3;
-}
-.elenco-seta {
-  flex: 0 0 36px;
-  width: 36px;
-  height: 36px;
-  border: 1px solid #ffffff35;
-  border-radius: 50%;
-  background: #171717;
-  color: #f5f5f5;
-  display: grid;
-  place-items: center;
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    background 0.2s;
-}
-.elenco-seta:hover {
-  color: var(--cor-primaria);
-  border-color: var(--cor-primaria);
-  background: #222;
-}
-.elenco-seta:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-.detalhe-desempenho {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 22px 0 30px;
-}
-.desempenho-item {
-  min-width: 180px;
-  padding: 13px 17px;
-  border-left: 2px solid var(--cor-primaria);
-  background: #111;
-  border-radius: 3px;
-}
-.desempenho-item span {
-  display: block;
-  color: #999;
-  font-size: 11px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.desempenho-item strong {
-  color: #f5f5f5;
-  font-size: 16px;
-}
-.trailer-frame {
-  width: min(100%, 720px);
-  aspect-ratio: 16/9;
-  max-height: none;
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-}
-@media (max-width: 600px) {
-  .elenco-wrapper {
-    gap: 7px;
-  }
-  .elenco-seta {
-    flex-basis: 30px;
-    width: 30px;
-    height: 30px;
-    font-size: 11px;
-  }
-  .elenco-lista {
-    gap: 14px;
-  }
-  .ator-card {
-    flex-basis: 88px;
-  }
-  .ator-card img {
-    width: 70px;
-    height: 70px;
-  }
-  .ator-nome {
-    font-size: 11px;
-  }
-  .ator-personagem {
-    font-size: 10px;
-  }
-  .desempenho-item {
-    min-width: calc(50% - 6px);
-    flex: 1;
-  }
-  .trailer-frame {
-    width: 100%;
-  }
-}
-
-/* Cabeçalho do elenco com controles no lado direito */
-.detalhe-cabecalho-secao {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-.detalhe-cabecalho-secao .detalhe-titulo-secao {
-  margin: 0;
-}
-.elenco-controles {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: auto;
-}
-.elenco-wrapper {
-  display: block;
-  width: 100%;
-}
-.elenco-lista {
-  justify-content: safe center;
-}
-.elenco-seta {
-  width: 34px;
-  height: 34px;
-  flex-basis: 34px;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-}
-.elenco-seta:hover:not(:disabled) {
-  transform: translateY(-1px);
-}
-.voltar-home {
+/* --------------------------------------------------------------------------
+   Botão Flutuante Voltar à Página Inicial
+   -------------------------------------------------------------------------- */
+.voltar-home,
+.detalhe__voltar {
   position: fixed;
   z-index: 35;
   top: 76px;
@@ -506,42 +43,420 @@
   transition:
     background 0.2s,
     border-color 0.2s,
-    transform 0.2s;
+    transform 0.2s,
+    color 0.2s;
 }
-.voltar-home:hover {
+
+.voltar-home:hover,
+.detalhe__voltar:hover {
   color: var(--cor-primaria);
   background: rgba(255, 255, 255, 0.18);
   border-color: #ffffff55;
   transform: translateY(-2px);
 }
-@media (max-width: 600px) {
-  .detalhe-cabecalho-secao {
-    gap: 10px;
-  }
-  .elenco-controles {
-    gap: 6px;
-  }
-  .elenco-seta {
-    width: 30px;
-    height: 30px;
-    flex-basis: 30px;
-  }
-  .voltar-home {
-    top: 70px;
-    left: 12px;
-    width: 40px;
-    height: 40px;
-  }
+
+.voltar-home:focus-visible,
+.detalhe__voltar:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 3px;
 }
 
-/* Guia de temporadas e episódios para séries */
+/* --------------------------------------------------------------------------
+   Status e Estados de Carregamento
+   -------------------------------------------------------------------------- */
+.detalhes-status {
+  padding: 40px 15px;
+  color: var(--cor-texto-claro);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero de Detalhes (Pôster, Fundo, Título e Sinopse)
+   -------------------------------------------------------------------------- */
+.detalhe-hero,
+.detalhe__hero {
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #171717 center/cover no-repeat;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detalhe-hero-overlay,
+.detalhe__hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.96) 0%,
+      rgba(0, 0, 0, 0.80) 48%,
+      rgba(0, 0, 0, 0.35) 100%
+    ),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.88), transparent 70%);
+}
+
+.detalhe-hero-conteudo,
+.detalhe__hero-conteudo {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  padding: clamp(24px, 4vw, 55px);
+  box-sizing: border-box;
+}
+
+.detalhe-poster-wrap,
+.detalhe__poster-wrap {
+  flex: 0 0 220px;
+}
+
+.detalhe-poster,
+.detalhe__poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 9px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  background: #202020;
+}
+
+.detalhe-textos,
+.detalhe__textos {
+  max-width: 820px;
+  padding-bottom: 6px;
+  flex: 1;
+}
+
+.detalhe-selo,
+.detalhe__selo {
+  display: inline-block;
+  color: var(--cor-primaria);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.detalhe-textos h1,
+.detalhe__titulo {
+  margin: 8px 0;
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.detalhe-tagline,
+.detalhe__tagline {
+  color: #ccc;
+  font-style: italic;
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+
+.detalhe-meta,
+.detalhe__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  color: #eee;
+  font-size: 13px;
+}
+
+.detalhe-meta strong {
+  color: var(--cor-primaria);
+}
+
+.detalhe-generos,
+.detalhe__generos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.detalhe-generos span {
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.detalhe-sinopse,
+.detalhe__sinopse {
+  max-width: 740px;
+  color: #eee;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.detalhe-acoes,
+.detalhe__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.detalhe-btn,
+.detalhe__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.detalhe-btn-principal,
+.detalhe__btn--principal {
+  color: #111;
+  background: var(--cor-primaria);
+}
+
+.detalhe-btn-principal:hover,
+.detalhe__btn--principal:hover {
+  background: #ffb300;
+  transform: translateY(-2px);
+}
+
+.detalhe-btn-secundario,
+.detalhe__btn--secundario {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.detalhe-btn-secundario:hover,
+.detalhe__btn--secundario:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.detalhe-btn--favorito-ativo {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  background: rgba(255, 193, 7, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Seções Gerais e Cabeçalhos
+   -------------------------------------------------------------------------- */
+.detalhe-secao {
+  margin: 38px 0;
+}
+
+.detalhe-titulo-secao {
+  color: var(--cor-primaria);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.detalhe-cabecalho-secao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.detalhe-cabecalho-secao .detalhe-titulo-secao {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Seção de Trailer Oficial
+   -------------------------------------------------------------------------- */
+#trailer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.trailer-frame {
+  position: relative;
+  width: min(100%, 720px);
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trailer-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Seção de Elenco Principal (Trilho com Controles)
+   -------------------------------------------------------------------------- */
+.elenco-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.elenco-wrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.elenco-lista {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 4px 14px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cor-primaria) transparent;
+}
+
+.elenco-lista::-webkit-scrollbar {
+  height: 5px;
+}
+
+.elenco-lista::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+  border-radius: 8px;
+}
+
+.ator-card {
+  flex: 0 0 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  scroll-snap-align: start;
+}
+
+.ator-card img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: #222;
+}
+
+.ator-info {
+  padding: 8px 0 0;
+  width: 100%;
+}
+
+.ator-nome {
+  color: #f5f5f5;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.35;
+}
+
+.ator-personagem {
+  margin-top: 4px;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.elenco-seta {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f5;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.elenco-seta:hover:not(:disabled) {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  background: #222;
+  transform: translateY(-1px);
+}
+
+.elenco-seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Métricas de Desempenho (Orçamento e Bilheteria)
+   -------------------------------------------------------------------------- */
+.detalhe-desempenho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 32px;
+}
+
+.desempenho-item {
+  min-width: 180px;
+  padding: 13px 17px;
+  border-left: 2px solid var(--cor-primaria);
+  background: #111;
+  border-radius: 4px;
+}
+
+.desempenho-item span {
+  display: block;
+  color: #999;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.desempenho-item strong {
+  color: #f5f5f5;
+  font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Guia de Temporadas e Episódios
+   -------------------------------------------------------------------------- */
 .temporadas-cabecalho {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   gap: 18px;
   margin-bottom: 18px;
 }
+
 .temporadas-eyebrow {
   display: block;
   color: var(--cor-primaria);
@@ -550,9 +465,11 @@
   letter-spacing: 1.5px;
   margin-bottom: 6px;
 }
+
 .temporadas-cabecalho .detalhe-titulo-secao {
   margin: 0;
 }
+
 .temporada-seletor-wrap {
   display: flex;
   flex-direction: column;
@@ -561,182 +478,54 @@
   color: #999;
   font-size: 11px;
 }
+
 .temporada-seletor {
   width: 100%;
-  padding: 11px 38px 11px 13px;
+  padding: 10px 14px;
   color: #fff;
-  border: 1px solid #ffffff24;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   background: #171717;
   outline: none;
   font: inherit;
   font-size: 13px;
 }
+
 .temporada-seletor:focus {
   border-color: var(--cor-primaria);
 }
-.temporada-seletor option {
-  background: #171717;
-  color: #fff;
-}
+
 .temporada-resumo {
   color: #aaa;
   font-size: 12px;
   line-height: 1.6;
-  margin: 0 0 15px;
+  margin: 0 0 16px;
   max-width: 850px;
 }
-.lista-episodios {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.episodio-item {
-  display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 17px;
-  padding: 12px;
-  background: #111;
-  border: 1px solid #ffffff0d;
-  border-radius: 10px;
-  transition:
-    background 0.2s,
-    border-color 0.2s,
-    transform 0.2s;
-}
-.episodio-item:hover {
-  background: #171717;
-  border-color: #ffffff20;
-  transform: translateY(-2px);
-}
-.episodio-imagem {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: 7px;
-  background: #222;
-}
-.episodio-imagem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.episodio-conteudo {
-  min-width: 0;
-}
-.episodio-topo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #999;
-  font-size: 11px;
-  margin-bottom: 7px;
-}
-.episodio-numero {
-  color: var(--cor-primaria);
-  font-weight: 800;
-}
-.episodio-conteudo h3 {
-  margin: 0 0 7px;
-  color: #fff;
-  font-size: 15px;
-}
-.episodio-conteudo p {
-  margin: 0;
-  color: #aaa;
-  font-size: 12px;
-  line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.episodio-nota {
-  align-self: start;
-  color: var(--cor-primaria);
-  font-size: 12px;
-  white-space: nowrap;
-  padding: 5px;
-}
-@media (max-width: 700px) {
-  .temporadas-cabecalho {
-    align-items: stretch;
-    flex-direction: column;
-  }
-  .temporada-seletor-wrap {
-    min-width: 0;
-    width: 100%;
-  }
-  .episodio-item {
-    grid-template-columns: 120px minmax(0, 1fr);
-    gap: 11px;
-    padding: 9px;
-  }
-  .episodio-nota {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    align-self: start;
-  }
-  .episodio-topo {
-    flex-wrap: wrap;
-    gap: 6px;
-    font-size: 10px;
-  }
-  .episodio-conteudo h3 {
-    font-size: 13px;
-    padding-right: 35px;
-  }
-  .episodio-conteudo p {
-    font-size: 11px;
-    -webkit-line-clamp: 2;
-  }
-}
-@media (max-width: 430px) {
-  .episodio-item {
-    grid-template-columns: 96px minmax(0, 1fr);
-    gap: 9px;
-  }
-}
 
-/* Trailer centralizado dentro da seção */
-#trailer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#trailer .detalhe-titulo-secao {
-  width: min(100%, 720px);
-  text-align: left;
-}
-.trailer-frame {
-  width: min(100%, 720px);
-  margin: 0 auto;
-}
-
-/* Episódios em trilho horizontal no estilo de catálogo */
 .lista-episodios {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  gap: 18px;
+  gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 5px 2px 16px;
+  padding: 4px 2px 16px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: var(--cor-primaria) transparent;
 }
+
 .lista-episodios::-webkit-scrollbar {
   height: 5px;
 }
+
 .lista-episodios::-webkit-scrollbar-thumb {
   background: var(--cor-primaria);
   border-radius: 10px;
 }
+
 .episodio-card {
   flex: 0 0 270px;
   min-width: 0;
@@ -746,43 +535,48 @@
   background: transparent;
   border-radius: 9px;
   overflow: hidden;
-  transition:
-    transform 0.22s ease,
-    filter 0.22s ease;
+  transition: transform 0.22s ease, filter 0.22s ease;
 }
+
 .episodio-card:hover {
   transform: translateY(-4px);
   filter: brightness(1.08);
 }
+
 .episodio-imagem {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 8px;
   background: #202020;
 }
+
 .episodio-imagem img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .episodio-card-info {
   padding: 10px 2px 3px;
   min-width: 0;
 }
+
 .episodio-titulo-linha {
   display: flex;
   align-items: baseline;
   gap: 8px;
   min-width: 0;
 }
+
 .episodio-numero {
   flex: 0 0 auto;
   color: var(--cor-primaria);
   font-size: 12px;
   font-weight: 800;
 }
+
 .episodio-titulo-linha h3 {
   min-width: 0;
   margin: 0;
@@ -793,6 +587,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .episodio-sinopse {
   margin: 7px 0 10px;
   color: #aaa;
@@ -804,6 +599,7 @@
   overflow: hidden;
   min-height: 36px;
 }
+
 .episodio-rodape {
   display: flex;
   justify-content: space-between;
@@ -812,8 +608,344 @@
   color: #888;
   font-size: 11px;
 }
-@media (max-width: 600px) {
+
+/* --------------------------------------------------------------------------
+   Recomendações
+   -------------------------------------------------------------------------- */
+#detalhe-recomendacoes .filme,
+#detalhe-recomendacoes .serie,
+#detalhe-recomendacoes .catalogo-card {
+  flex: 0 0 155px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE E MEDIA QUERIES (Exigência do PDF: 3 Blocos @media screen)
+   Adaptado rigorosamente para:
+   1. Telas grandes / Computador (acima de 768px, testado em 1366px)
+   2. Telas médias / Tablets (até 768px)
+   3. Telas pequenas / Smartphones e Celulares (até 480px, testado em 375px)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Bloco Desktop (acima de 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 769px) {
+  .detalhes-main {
+    padding-right: max(24px, calc((100vw - var(--largura-conteudo)) / 2));
+    padding-left: max(24px, calc((100vw - var(--largura-conteudo)) / 2));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Bloco Tablet (até 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .detalhes-main {
+    padding: 16px;
+  }
+
+  .voltar-home,
+  .detalhe__voltar {
+    top: 72px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .detalhe-hero,
+  .detalhe__hero {
+    min-height: 0;
+  }
+
+  .detalhe-hero-conteudo,
+  .detalhe__hero-conteudo {
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .detalhe-poster-wrap,
+  .detalhe__poster-wrap {
+    flex-basis: 150px;
+  }
+
+  .detalhe-textos h1,
+  .detalhe__titulo {
+    font-size: 32px;
+  }
+
+  .detalhe-sinopse,
+  .detalhe__sinopse {
+    font-size: 13px;
+  }
+
+  .desempenho-item {
+    min-width: calc(50% - 8px);
+    flex: 1;
+  }
+
+  .temporadas-cabecalho {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .temporada-seletor-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #detalhe-recomendacoes .filme,
+  #detalhe-recomendacoes .serie,
+  #detalhe-recomendacoes .catalogo-card {
+    flex-basis: 140px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Bloco Smartphone / Celular (até 480px — Testado e Otimizado para 375px)
+   Reorganiza o Hero verticalmente, botões em largura total e evita overflow.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .detalhes-main {
+    padding: 10px 12px;
+  }
+
+  /* Botão voltar posicionado para não cobrir outros elementos */
+  .voltar-home,
+  .detalhe__voltar {
+    top: 64px;
+    left: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  /* O Hero no celular passa de layout horizontal para layout vertical centralizado */
+  .detalhe-hero,
+  .detalhe__hero {
+    min-height: auto;
+    border-radius: 10px;
+  }
+
+  .detalhe-hero-overlay,
+  .detalhe__hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(7, 7, 10, 0.88) 35%,
+      rgba(7, 7, 10, 0.98) 100%
+    );
+  }
+
+  .detalhe-hero-conteudo,
+  .detalhe__hero-conteudo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 22px 14px 20px;
+  }
+
+  /* Pôster em destaque centralizado no topo */
+  .detalhe-poster-wrap,
+  .detalhe__poster-wrap {
+    flex: 0 0 auto;
+    width: 140px;
+    margin: 0 auto;
+  }
+
+  .detalhe-poster,
+  .detalhe__poster {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
+  }
+
+  .detalhe-textos,
+  .detalhe__textos {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .detalhe-textos h1,
+  .detalhe__titulo {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 6px 0 8px;
+    word-break: break-word;
+  }
+
+  .detalhe-tagline,
+  .detalhe__tagline {
+    font-size: 11.5px;
+    margin-bottom: 10px;
+  }
+
+  .detalhe-meta,
+  .detalhe__meta {
+    justify-content: center;
+    gap: 8px 12px;
+    font-size: 11px;
+  }
+
+  .detalhe-generos,
+  .detalhe__generos {
+    justify-content: center;
+    gap: 6px;
+    margin: 12px 0;
+  }
+
+  .detalhe-generos span {
+    padding: 4px 8px;
+    font-size: 10.5px;
+  }
+
+  .detalhe-sinopse,
+  .detalhe__sinopse {
+    font-size: 12.5px;
+    line-height: 1.6;
+    text-align: left;
+    margin: 12px 0 16px;
+    color: #dedee3;
+  }
+
+  /* Botões de ação em coluna com largura total e toque confortável */
+  .detalhe-acoes,
+  .detalhe__acoes {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .detalhe-btn,
+  .detalhe__btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 14px;
+    font-size: 12.5px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Elenco adaptado para mobile */
+  .detalhe-cabecalho-secao {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .detalhe-titulo-secao {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .elenco-controles {
+    gap: 6px;
+  }
+
+  .elenco-seta {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+    font-size: 11px;
+  }
+
+  .elenco-lista {
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+
+  .ator-card {
+    flex: 0 0 85px;
+  }
+
+  .ator-card img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .ator-nome {
+    font-size: 11px;
+  }
+
+  .ator-personagem {
+    font-size: 10px;
+  }
+
+  /* Métricas em grid de 2 colunas para caber em 375px sem overflow */
+  .detalhe-desempenho {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    margin: 18px 0 24px;
+  }
+
+  .desempenho-item {
+    min-width: 0;
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+  }
+
+  .desempenho-item span {
+    font-size: 9.5px;
+    margin-bottom: 4px;
+  }
+
+  .desempenho-item strong {
+    font-size: 13.5px;
+  }
+
+  /* Trailer e iframe */
+  .trailer-frame {
+    width: 100%;
+    border-radius: 7px;
+  }
+
+  /* Guia de episódios no celular */
+  .temporadas-cabecalho {
+    margin-bottom: 12px;
+  }
+
+  .temporada-seletor {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .temporada-resumo {
+    font-size: 11.5px;
+    margin-bottom: 12px;
+  }
+
+  .lista-episodios {
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+
   .episodio-card {
-    flex-basis: 235px;
+    flex: 0 0 220px;
+  }
+
+  .episodio-titulo-linha h3 {
+    font-size: 12.5px;
+  }
+
+  .episodio-sinopse {
+    font-size: 11px;
+    line-height: 1.45;
+    min-height: 32px;
+  }
+
+  .episodio-rodape {
+    font-size: 10px;
+  }
+
+  /* Recomendações no celular */
+  #detalhe-recomendacoes .filme,
+  #detalhe-recomendacoes .serie,
+  #detalhe-recomendacoes .catalogo-card {
+    flex-basis: 120px;
   }
 }
