@@ -610,6 +610,155 @@
 }
 
 /* --------------------------------------------------------------------------
+   Modal do Player de Reprodução (Streaming Embed)
+   -------------------------------------------------------------------------- */
+.player-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.player-modal.hidden {
+  display: none !important;
+}
+
+.player-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.player-modal__dialogo {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1000px);
+  background: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+}
+
+.player-modal__cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #14141c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.player-modal__subtitulo {
+  display: block;
+  color: var(--cor-primaria);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.player-modal__titulo {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80vw;
+}
+
+.player-modal__fechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.player-modal__fechar:hover {
+  background: var(--cor-primaria);
+  color: #000;
+  border-color: var(--cor-primaria);
+  transform: scale(1.08);
+}
+
+.player-modal__corpo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+.player-modal__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Indicador de reprodução nos cards de episódios */
+.episodio-card {
+  cursor: pointer;
+}
+
+.episodio-card:hover .episodio-imagem {
+  border-color: var(--cor-primaria);
+}
+
+.episodio-imagem {
+  position: relative;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.episodio-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.episodio-card:hover .episodio-play-overlay {
+  opacity: 1;
+}
+
+.episodio-play-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cor-primaria);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
    Recomendações
    -------------------------------------------------------------------------- */
 #detalhe-recomendacoes .filme,
@@ -947,5 +1096,25 @@
   #detalhe-recomendacoes .serie,
   #detalhe-recomendacoes .catalogo-card {
     flex-basis: 120px;
+  }
+
+  /* Modal do player no celular */
+  .player-modal {
+    padding: 8px;
+  }
+
+  .player-modal__cabecalho {
+    padding: 10px 14px;
+  }
+
+  .player-modal__titulo {
+    font-size: 13.5px;
+    max-width: 70vw;
+  }
+
+  .player-modal__fechar {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
   }
 }

@@ -3,6 +3,75 @@ const IMG = "https://image.tmdb.org/t/p/";
 const PLACEHOLDER = "https://placehold.co/300x450/202020/ffc107?text=Sem+foto";
 const STORAGE_KEY = "mastercine_tmdb_api_key";
 const FAVORITOS_KEY = "mastercine_favoritos";
+
+// Configuração centralizada da API de Streaming / Player Embed
+const PLAYER_API = {
+  filme: (tmdbId) => `https://myembed.biz/filme/${tmdbId}`,
+  serie: (tmdbId, season, episode) => `https://myembed.biz/serie/${tmdbId}/${season}/${episode}`,
+};
+
+let mediaAtual = {
+  id: null,
+  type: "movie",
+  title: "",
+  temporadaAtual: 1,
+  primeiroEpisodio: 1,
+};
+
+function abrirPlayer(url, titulo, subtitulo = "Reproduzindo") {
+  const modal = document.getElementById("player-modal");
+  const iframe = document.getElementById("player-iframe");
+  const modalTitulo = document.getElementById("player-modal-titulo");
+  const modalSubtitulo = document.getElementById("player-modal-subtitulo");
+  if (!modal || !iframe) return;
+
+  if (modalTitulo) modalTitulo.textContent = titulo;
+  if (modalSubtitulo) modalSubtitulo.textContent = subtitulo;
+  iframe.src = url;
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharPlayer() {
+  const modal = document.getElementById("player-modal");
+  const iframe = document.getElementById("player-iframe");
+  if (iframe) iframe.src = "";
+  if (modal) modal.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function configurarModalPlayer() {
+  const fecharBtn = document.getElementById("player-modal-fechar");
+  const backdrop = document.getElementById("player-modal-backdrop");
+  if (fecharBtn) fecharBtn.addEventListener("click", fecharPlayer);
+  if (backdrop) backdrop.addEventListener("click", fecharPlayer);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const modal = document.getElementById("player-modal");
+      if (modal && !modal.classList.contains("hidden")) fecharPlayer();
+    }
+  });
+}
+
+function configurarBotaoAssistir() {
+  const btn = document.getElementById("detalhe-assistir-btn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    if (mediaAtual.type === "movie") {
+      const url = PLAYER_API.filme(mediaAtual.id);
+      abrirPlayer(url, mediaAtual.title, "Filme Completo");
+    } else {
+      const season = mediaAtual.temporadaAtual || 1;
+      const episode = mediaAtual.primeiroEpisodio || 1;
+      const url = PLAYER_API.serie(mediaAtual.id, season, episode);
+      abrirPlayer(
+        url,
+        `${mediaAtual.title} — T${season}:E${episode}`,
+        `Temporada ${season} · Episódio ${episode}`,
+      );
+    }
+  });
+}
 function obterFavoritos() {
   try {
     return JSON.parse(localStorage.getItem(FAVORITOS_KEY) || "[]");
@@ -125,6 +194,11 @@ async function carregarTemporada(tvId, temporada) {
       data.overview ||
       `${data.episodes?.length || 0} episódios nesta temporada.`;
     const episodes = data.episodes || [];
+
+    // Atualiza a temporada selecionada e o primeiro episódio para o botão principal Assistir
+    mediaAtual.temporadaAtual = Number(temporada);
+    mediaAtual.primeiroEpisodio = episodes[0]?.episode_number || 1;
+
     lista.innerHTML = episodes.length
       ? episodes
           .map((ep) => {
@@ -137,8 +211,11 @@ async function carregarTemporada(tvId, temporada) {
             const duracao = ep.runtime
               ? ep.runtime + " min"
               : "Duração não informada";
-            return `<article class="episodio-card">
-        <div class="episodio-imagem"><img src="${still}" alt="Imagem do episódio ${ep.episode_number}" loading="lazy"></div>
+            return `<article class="episodio-card" role="button" tabindex="0" data-episodio="${ep.episode_number}" data-nome="${escapeHTML(ep.name || "Episódio " + ep.episode_number)}">
+        <div class="episodio-imagem">
+          <img src="${still}" alt="Imagem do episódio ${ep.episode_number}" loading="lazy">
+          <div class="episodio-play-overlay"><span class="episodio-play-icon"><i class="fa-solid fa-play"></i></span></div>
+        </div>
         <div class="episodio-card-info">
           <div class="episodio-titulo-linha">
             <span class="episodio-numero">E${String(ep.episode_number).padStart(2, "0")}</span>
@@ -151,6 +228,28 @@ async function carregarTemporada(tvId, temporada) {
           })
           .join("")
       : '<p class="detalhes-status">Nenhum episódio disponível para esta temporada.</p>';
+
+    // Ao clicar em qualquer episódio da série, abre o modal de acordo com a API:
+    // https://myembed.biz/serie/{tmdb_id}/{season}/{episode}
+    lista.querySelectorAll(".episodio-card").forEach((card) => {
+      const abrirEp = () => {
+        const epNum = Number(card.dataset.episodio) || 1;
+        const epNome = card.dataset.nome || `Episódio ${epNum}`;
+        const url = PLAYER_API.serie(tvId, temporada, epNum);
+        abrirPlayer(
+          url,
+          `${mediaAtual.title} — T${temporada}:E${epNum} · ${epNome}`,
+          `Temporada ${temporada} · Episódio ${epNum}`,
+        );
+      };
+      card.addEventListener("click", abrirEp);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          abrirEp();
+        }
+      });
+    });
   } catch (error) {
     lista.innerHTML = `<p class="detalhes-status">${escapeHTML(error.message)}</p>`;
   }
@@ -194,6 +293,15 @@ async function carregarDetalhes() {
     requisicaoTMDB(`/${type}/${id}/recommendations`),
   ]);
   const title = item.title || item.name || "Sem título";
+  mediaAtual.id = id;
+  mediaAtual.type = type;
+  mediaAtual.title = title;
+  mediaAtual.temporadaAtual = 1;
+  mediaAtual.primeiroEpisodio = 1;
+
+  configurarModalPlayer();
+  configurarBotaoAssistir();
+
   atualizarBotaoFavorito(item, type);
   document.title = title + " | MasterCine";
   document.getElementById("detalhe-hero").style.backgroundImage =
@@ -237,7 +345,6 @@ async function carregarDetalhes() {
       "https://www.youtube-nocookie.com/embed/" +
       encodeURIComponent(trailer.key);
     document.getElementById("trailer").classList.remove("hidden");
-    document.getElementById("detalhe-trailer-btn").classList.remove("hidden");
   }
   const cast = (credits.cast || []).slice(0, 18);
   document.getElementById("detalhe-elenco").innerHTML = cast.length

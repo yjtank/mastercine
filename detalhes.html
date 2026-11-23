@@ -46,8 +46,7 @@
               <div id="detalhe-generos" class="detalhe-generos detalhe__generos"></div>
               <p id="detalhe-sinopse" class="detalhe-sinopse detalhe__sinopse"></p>
               <div class="detalhe-acoes detalhe__acoes">
-                <a id="detalhe-trailer-btn" class="detalhe-btn detalhe-btn-principal detalhe__btn detalhe__btn--principal hidden" href="#trailer"><i class="fa-solid fa-play"></i> Assistir trailer</a>
-                <a class="detalhe-btn detalhe-btn-secundario detalhe__btn detalhe__btn--secundario" href="#elenco"><i class="fa-solid fa-users"></i> Ver elenco</a>
+                <button id="detalhe-assistir-btn" class="detalhe-btn detalhe-btn-principal detalhe__btn detalhe__btn--principal" type="button"><i class="fa-solid fa-play"></i> Assistir</button>
                 <button id="detalhe-favorito" class="detalhe-btn detalhe-btn-secundario detalhe-btn-favorito detalhe__btn detalhe__btn--favorito" type="button" aria-pressed="false"><i class="fa-regular fa-heart"></i> Adicionar aos favoritos</button>
               </div>
             </div>
@@ -103,6 +102,25 @@
       <p class="rodape__texto">© 2026 MasterCine. Todos os direitos reservados.</p>
       <p class="rodape__aviso">Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.</p>
     </footer>
+
+    <!-- Modal do Player de Reprodução -->
+    <div id="player-modal" class="player-modal hidden" role="dialog" aria-modal="true" aria-labelledby="player-modal-titulo">
+      <div class="player-modal__backdrop" id="player-modal-backdrop"></div>
+      <div class="player-modal__dialogo">
+        <header class="player-modal__cabecalho">
+          <div class="player-modal__titulos">
+            <span id="player-modal-subtitulo" class="player-modal__subtitulo">Reproduzindo</span>
+            <h2 id="player-modal-titulo" class="player-modal__titulo">Assistir</h2>
+          </div>
+          <button id="player-modal-fechar" class="player-modal__fechar" type="button" aria-label="Fechar reprodutor">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </header>
+        <div class="player-modal__corpo">
+          <iframe id="player-iframe" class="player-modal__iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
