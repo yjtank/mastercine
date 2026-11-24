@@ -72,6 +72,7 @@ function configurarBotaoAssistir() {
     }
   });
 }
+
 function obterFavoritos() {
   try {
     return JSON.parse(localStorage.getItem(FAVORITOS_KEY) || "[]");
@@ -116,7 +117,6 @@ function atualizarBotaoFavorito(item, type) {
   });
   atualizar();
 }
-
 
 let apiKey = localStorage.getItem(STORAGE_KEY) || "";
 

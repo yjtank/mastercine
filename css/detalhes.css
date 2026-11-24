@@ -15,9 +15,6 @@
   box-sizing: border-box;
 }
 
-/* --------------------------------------------------------------------------
-   Botão Flutuante Voltar à Página Inicial
-   -------------------------------------------------------------------------- */
 .voltar-home,
 .detalhe__voltar {
   position: fixed;
@@ -261,9 +258,6 @@
   background: rgba(255, 193, 7, 0.15);
 }
 
-/* --------------------------------------------------------------------------
-   Seções Gerais e Cabeçalhos
-   -------------------------------------------------------------------------- */
 .detalhe-secao {
   margin: 38px 0;
 }
@@ -312,9 +306,7 @@
   border: 0;
 }
 
-/* --------------------------------------------------------------------------
-   Seção de Elenco Principal (Trilho com Controles)
-   -------------------------------------------------------------------------- */
+/* Seção de Elenco */
 .elenco-controles {
   display: flex;
   align-items: center;
@@ -415,9 +407,6 @@
   cursor: default;
 }
 
-/* --------------------------------------------------------------------------
-   Métricas de Desempenho (Orçamento e Bilheteria)
-   -------------------------------------------------------------------------- */
 .detalhe-desempenho {
   display: flex;
   flex-wrap: wrap;
@@ -446,9 +435,7 @@
   font-size: 16px;
 }
 
-/* --------------------------------------------------------------------------
-   Guia de Temporadas e Episódios
-   -------------------------------------------------------------------------- */
+/* Temporadas e Episódios */
 .temporadas-cabecalho {
   display: flex;
   justify-content: space-between;
@@ -609,9 +596,7 @@
   font-size: 11px;
 }
 
-/* --------------------------------------------------------------------------
-   Modal do Player de Reprodução (Streaming Embed)
-   -------------------------------------------------------------------------- */
+/* Modal do Player de Reprodução (Streaming Embed) */
 .player-modal {
   position: fixed;
   inset: 0;
@@ -715,7 +700,6 @@
   border: 0;
 }
 
-/* Indicador de reprodução nos cards de episódios */
 .episodio-card {
   cursor: pointer;
 }
@@ -758,26 +742,14 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
-/* --------------------------------------------------------------------------
-   Recomendações
-   -------------------------------------------------------------------------- */
 #detalhe-recomendacoes .filme,
 #detalhe-recomendacoes .serie,
 #detalhe-recomendacoes .catalogo-card {
   flex: 0 0 155px;
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE E MEDIA QUERIES (Exigência do PDF: 3 Blocos @media screen)
-   Adaptado rigorosamente para:
-   1. Telas grandes / Computador (acima de 768px, testado em 1366px)
-   2. Telas médias / Tablets (até 768px)
-   3. Telas pequenas / Smartphones e Celulares (até 480px, testado em 375px)
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. Bloco Desktop (acima de 768px)
-   -------------------------------------------------------------------------- */
+/* Responsividade */
 @media screen and (min-width: 769px) {
   .detalhes-main {
     padding-right: max(24px, calc((100vw - var(--largura-conteudo)) / 2));
@@ -785,9 +757,6 @@
   }
 }
 
-/* --------------------------------------------------------------------------
-   2. Bloco Tablet (até 768px)
-   -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
   .detalhes-main {
     padding: 16px;
@@ -850,16 +819,12 @@
   }
 }
 
-/* --------------------------------------------------------------------------
-   3. Bloco Smartphone / Celular (até 480px — Testado e Otimizado para 375px)
-   Reorganiza o Hero verticalmente, botões em largura total e evita overflow.
-   -------------------------------------------------------------------------- */
+
 @media screen and (max-width: 480px) {
   .detalhes-main {
     padding: 10px 12px;
   }
 
-  /* Botão voltar posicionado para não cobrir outros elementos */
   .voltar-home,
   .detalhe__voltar {
     top: 64px;
@@ -869,7 +834,6 @@
     font-size: 13px;
   }
 
-  /* O Hero no celular passa de layout horizontal para layout vertical centralizado */
   .detalhe-hero,
   .detalhe__hero {
     min-height: auto;
@@ -895,7 +859,6 @@
     padding: 22px 14px 20px;
   }
 
-  /* Pôster em destaque centralizado no topo */
   .detalhe-poster-wrap,
   .detalhe__poster-wrap {
     flex: 0 0 auto;
@@ -959,7 +922,6 @@
     color: #dedee3;
   }
 
-  /* Botões de ação em coluna com largura total e toque confortável */
   .detalhe-acoes,
   .detalhe__acoes {
     flex-direction: column;
@@ -978,7 +940,6 @@
     text-align: center;
   }
 
-  /* Elenco adaptado para mobile */
   .detalhe-cabecalho-secao {
     gap: 10px;
     margin-bottom: 10px;

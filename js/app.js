@@ -73,6 +73,7 @@
         })[c],
     );
   }
+
   // Consulta a API do TMDB usando a chave armazenada no navegador e idioma português.
   async function tmdb(path, params = {}) {
     if (!apiKey) throw new Error("Configure sua chave da API do TMDB.");
@@ -90,6 +91,7 @@
     }
     return response.json();
   }
+
   // BEM: catalogo-card é o bloco; poster, dados, textos, título, ano e avaliação são seus elementos.
   function criarCard(item, tipo) {
     const titulo = item.title || item.name || "Sem título";
@@ -107,6 +109,7 @@
     </div>
   </article>`;
   }
+
   function ativarCards(raiz = document) {
     raiz.querySelectorAll(".filme,.serie").forEach((card) => {
       if (card.dataset.evento) return;
@@ -124,6 +127,7 @@
       });
     });
   }
+
   function renderizarSecao(secao, resultados) {
     const container = document.getElementById(secao.id);
     const tipo = secao.tipo;
@@ -133,6 +137,7 @@
       : '<p class="estado">Nenhum título encontrado.</p>';
     ativarCards(container);
   }
+
   function criarSecoes() {
     const main = document.querySelector(".main");
     const secaoSlider = document.querySelector(".sessao-slides");
@@ -149,6 +154,7 @@
       ancora = section;
     });
   }
+
   function montarSlider(items) {
     slidesAtuais = items.filter((item) => item.backdrop_path).slice(0, 5);
     const container = document.querySelector(".slides-container");
@@ -212,6 +218,7 @@
     mostrarSlide(0);
     iniciarSlider();
   }
+
   function mostrarSlide(index) {
     if (!slidesAtuais.length) return;
     slideAtual = (index + slidesAtuais.length) % slidesAtuais.length;
@@ -226,10 +233,12 @@
     void barra.offsetWidth;
     barra.classList.add("animando");
   }
+
   function iniciarSlider() {
     clearInterval(timerSlider);
     timerSlider = setInterval(() => mostrarSlide(slideAtual + 1), 6000);
   }
+
   async function carregarCatalogo() {
     if (!apiKey) {
       document
@@ -255,6 +264,7 @@
       console.error(error);
     }
   }
+
   async function pesquisar() {
     const query = document.getElementById("search-input").value.trim();
     const results = document.getElementById("search-results");
@@ -303,6 +313,7 @@
         '<p class="estado">' + escapeHTML(error.message) + "</p>";
     }
   }
+
   function configurarBusca() {
     const icon = document.getElementById("search-icon"),
       bar = document.getElementById("search-bar");
@@ -341,6 +352,7 @@
       if (event.key === "Escape") fechar();
     });
   }
+
   function configurarApi() {
     if (!apiKey) {
       const chave = prompt(
@@ -352,6 +364,7 @@
       }
     }
   }
+  
   document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".sessao-slides")) {
       criarSecoes();

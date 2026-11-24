@@ -510,6 +510,9 @@ img {
   color: var(--cor-primaria);
   font-size: 12px;
 }
+
+/* tela de pesquisa */
+
 .pagina-pesquisa {
   min-height: 70vh;
 }
@@ -693,7 +696,7 @@ button:disabled {
     font-size: 10px;
   }
 }
-/* Aliases BEM para os componentes globais. As classes antigas são mantidas para compatibilidade dos scripts existentes. */
+/* Aliases BEM para os componentes globais. */
 .cabecalho__navegacao {
   display: flex;
   align-items: center;
