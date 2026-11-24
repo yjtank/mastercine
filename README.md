@@ -1,263 +1,312 @@
-# 🎬 MasterCine — Catálogo & Streaming de Filmes e Séries
+# 🎬 MasterCine
 
-Plataforma web moderna, dinâmica e totalmente responsiva para catálogo e reprodução de filmes e séries, desenvolvida com **HTML5 Semântico**, **CSS3 Moderno (BEM, Flexbox e Grid)** e **JavaScript Vanilla**.
+> Catálogo de filmes e séries feito com **HTML5 semântico**, **CSS3** (Flexbox, Grid, BEM e Media Queries) e **JavaScript puro**, com dados em tempo real da API do TMDB.
+
+🔗 **Site no ar:** [mastercine-three.vercel.app](https://mastercine-three.vercel.app)
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TMDB](https://img.shields.io/badge/API-TMDB-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
+
+Trabalho final da disciplina **Programação Web — Web Coding** · Ciência da Computação · UNINASSAU
 
 ---
 
 ## 📌 Sumário
-- [1. Visão Geral do Projeto](#1-visão-geral-do-projeto)
-- [2. Estrutura de Diretórios](#2-estrutura-de-diretórios)
-- [3. Páginas do Projeto](#3-páginas-do-projeto)
-- [4. HTML5 Semântico](#4-html5-semântico)
-- [5. Metodologia BEM (Block, Element, Modifier)](#5-metodologia-bem-block-element-modifier)
-- [6. Aplicação de Flexbox](#6-aplicação-de-flexbox)
-- [7. Aplicação de CSS Grid Layout](#7-aplicação-de-css-grid-layout)
-- [8. Responsividade e Media Queries](#8-responsividade-e-media-queries)
-- [9. Capturas de Tela](#9-capturas-de-tela)
-- [10. Diferenciais Técnicos (APIs e Persistência)](#10-diferenciais-técnicos-apis-e-persistência)
-- [11. Como Executar o Projeto](#11-como-executar-o-projeto)
+
+1. [Equipe](#-equipe)
+2. [Sobre o projeto](#-sobre-o-projeto)
+3. [Páginas](#-páginas)
+4. [Estrutura de pastas](#-estrutura-de-pastas)
+5. [HTML5 semântico e acessibilidade](#-html5-semântico-e-acessibilidade)
+6. [Metodologia BEM](#-metodologia-bem)
+7. [Flexbox](#-flexbox)
+8. [CSS Grid Layout](#-css-grid-layout)
+9. [Responsividade e Media Queries](#-responsividade-e-media-queries)
+10. [Capturas de tela](#-capturas-de-tela)
+11. [APIs e persistência (ponto extra)](#-apis-e-persistência-ponto-extra)
+12. [Como executar](#-como-executar)
 
 ---
 
-## 1. Visão Geral do Projeto
-O **MasterCine** é uma aplicação web completa desenvolvida com foco em performance, acessibilidade e experiência do usuário. A plataforma permite explorar o catálogo cinematográfico global, realizar buscas em tempo real por palavras-chave, filtrar por categorias, gerenciar uma lista pessoal de favoritos com persistência local, consultar fichas técnicas detalhadas (elenco, orçamentos, bilheterias, trailers oficiais, temporadas e episódios) e reproduzir conteúdos por meio de um player modal integrado.
+## 👥 Equipe
 
-A arquitetura do projeto demonstra domínio prático da estruturação semântica, organização de layouts bidimensionais e unidimensionais com CSS Grid e Flexbox, padronização de código com a metodologia BEM e adaptação fluida para diferentes resoluções de tela.
+| Integrante | Responsável por |
+| --- | --- |
+| Valdeson Leandro | Home (`index.html`) e Detalhes (`detalhes.html`) |
+| Álvaro Sollon | Pesquisa (`pesquisa.html`) e Favoritos (`favoritos.html`) |
+| João Davi | Sobre (`sobre.html`) e documentação |
 
 ---
 
-## 2. Estrutura de Diretórios
-A organização dos arquivos segue uma estrutura modular e separada por responsabilidades:
+## 🎯 Sobre o projeto
+
+O MasterCine é um catálogo no estilo das plataformas de streaming. O usuário pode:
+
+- ver os títulos em alta num banner rotativo e navegar por 7 categorias;
+- pesquisar qualquer filme ou série pelo nome;
+- abrir a ficha completa de um título (sinopse, elenco, trailer, orçamento, bilheteria e recomendações);
+- em séries, escolher a temporada e ver a lista de episódios;
+- assistir pelo player integrado;
+- salvar favoritos, que continuam lá mesmo depois de fechar o navegador.
+
+Nenhum filme está escrito no código: todos os dados vêm da API do TMDB no momento em que a página abre.
+
+---
+
+## 📄 Páginas
+
+O site tem **5 páginas HTML** ligadas pelo mesmo menu. A página atual fica marcada com a classe `cabecalho__link--ativo` e com `aria-current="page"`.
+
+| Página | Arquivo | O que tem |
+| --- | --- | --- |
+| Início | `index.html` | Banner com os 5 títulos em alta da semana (troca a cada 6 s) e 7 trilhos de categorias: Filmes populares, Séries populares, Terror, Ação e aventura, Animação, Ficção científica e Lançamentos |
+| Detalhes | `detalhes.html` | Hero com backdrop, pôster, nota, gêneros e sinopse; botões **Assistir** e **Adicionar aos favoritos**; temporadas e episódios (séries); trailer; elenco em carrossel; orçamento e bilheteria; recomendações |
+| Pesquisa | `pesquisa.html` | Busca por nome (filmes e séries juntos) com resultados em grade |
+| Favoritos | `favoritos.html` | Títulos salvos no navegador, com botão de remover e mensagem quando a lista está vazia |
+| Sobre | `sobre.html` | Objetivo do projeto, recursos e tecnologias |
+
+```mermaid
+flowchart LR
+    H[🏠 Início] --> D[🎞️ Detalhes]
+    P[🔍 Pesquisa] --> D
+    F[❤️ Favoritos] --> D
+    D -- Adicionar aos favoritos --> F
+    D -- Recomendações --> D
+    M{{Menu em todas as páginas}} -.-> H & P & F & S[ℹ️ Sobre]
+```
+
+A página de Detalhes é uma só para qualquer título: o ID e o tipo vão na URL (`detalhes.html?id=550&type=movie`) e o JavaScript busca os dados correspondentes.
+
+---
+
+## 📁 Estrutura de pastas
 
 ```text
-projhtml/
+mastercine/
 ├── css/
-│   ├── style.css           # Estilos globais, reset, cabeçalho, catálogo, rodapé e media queries
-│   ├── detalhes.css        # Estilos da página de detalhes, episódios, elenco e modal do player
-│   ├── favoritos.css       # Estilos da página de favoritos e modal de confirmação
-│   └── sobre.css           # Estilos da página institucional, grids de recursos e equipe
+│   ├── style.css       # estilos globais: cabeçalho, banner, trilhos, pesquisa, rodapé e media queries
+│   ├── detalhes.css    # página de detalhes, episódios, elenco e modal do player
+│   ├── favoritos.css   # grade de favoritos e estado vazio
+│   └── sobre.css       # página Sobre
 ├── js/
-│   ├── app.js              # Lógica da home: listagem TMDB, abas, paginação e modal de chave
-│   ├── detalhes.js         # Lógica da página de detalhes: API TMDB, player embed e temporadas
-│   ├── favoritos.js        # Gerenciamento de favoritos no LocalStorage e renderização
-│   └── pesquisa.js         # Busca dinâmica, filtros por tipo (filmes/séries) e ordenação
+│   ├── app.js          # Home: banner rotativo e categorias
+│   ├── detalhes.js     # Detalhes: dados do título, temporadas, player e botão de favoritos
+│   ├── pesquisa.js     # Pesquisa: busca na API e renderização dos resultados
+│   └── favoritos.js    # Favoritos: leitura, renderização e remoção
 ├── img/
-│   └── screenshots/        # Capturas de tela da aplicação em diferentes resoluções
-│       ├── desktop-1366.png
-│       ├── tablet-768.png
-│       └── mobile-375.png
-├── index.html              # Página inicial (Catálogo em alta, populares e bem avaliados)
-├── detalhes.html           # Página de detalhes do filme/série com guia de episódios e player
-├── favoritos.html          # Página de favoritos salvos pelo usuário
-├── pesquisa.html           # Página de busca e filtragem avançada
-├── sobre.html              # Página institucional e apresentação técnica do projeto
-└── README.md               # Documentação técnica completa
+│   └── screenshots/    # capturas em 1366, 768 e 375 px
+├── index.html
+├── detalhes.html
+├── pesquisa.html
+├── favoritos.html
+├── sobre.html
+└── README.md
 ```
 
----
-
-## 3. Páginas do Projeto
-O projeto é composto por **5 páginas HTML distintas e totalmente interligadas**, mantendo consistência visual, hierarquia de navegação e compartilhamento de componentes estruturais:
-
-1. **`index.html` (Início / Catálogo)**: Apresenta o banner de destaque principal (*Hero Banner*), navegação por abas dinâmicas ("Em Alta", "Populares", "Mais Votados") e grade de catálogo com paginação.
-2. **`detalhes.html` (Detalhes & Reprodução)**: Exibe informações detalhadas de cada título (sinopse, avaliação, gêneros, duração, orçamento, bilheteria, elenco em carrossel e recomendações). Para séries, inclui seletor de temporadas e lista de episódios. Possui botão **"Assistir"** e cards de episódios vinculados ao player embed modal.
-3. **`pesquisa.html` (Busca & Filtros)**: Interface de pesquisa por texto com filtros dinâmicos por formato (Todos, Filmes, Séries), ordenação (Popularidade, Avaliação, Lançamento) e paginação.
-4. **`favoritos.html` (Meus Favoritos)**: Área dedicada onde o usuário pode consultar todos os filmes e séries salvos, com filtros rápidos, contadores e opção de exclusão.
-5. **`sobre.html` (Sobre o Projeto)**: Apresentação da proposta, tecnologias empregadas, arquitetura do sistema e equipe desenvolvedora.
+Todo o CSS é externo. Cada página carrega o `style.css` global e, quando precisa, o seu CSS próprio.
 
 ---
 
-## 4. HTML5 Semântico
-Toda a estruturação das páginas segue as diretrizes do HTML5 semântico, promovendo acessibilidade, SEO e clareza estrutural:
+## 🧱 HTML5 semântico e acessibilidade
 
-- **`<header>`**: Delimita o cabeçalho superior unificado em todas as páginas.
-- **`<nav>`**: Agrupa o menu de navegação principal e controles de páginas.
-- **`<main>`**: Encapsula o conteúdo principal e relevante de cada documento.
-- **`<section>`**: Setoriza blocos temáticos como Hero, Categorias, Temporadas, Elenco, Recomendações e Informações Técnicas.
-- **`<article>`**: Utilizado para unidades independentes de conteúdo, tais como cards de filmes/séries (`.catalogo-card`), cards de episódios (`.episodio-card`) e cards de atores (`.ator-card`).
-- **`<footer>`**: Delimita o rodapé padrão com créditos e avisos de direitos.
+Todas as páginas seguem a mesma estrutura:
 
----
-
-## 5. Metodologia BEM (Block, Element, Modifier)
-A nomenclatura das classes CSS segue rigorosamente a metodologia **BEM**:
-- **Bloco (`block`)**: Componente independente e reutilizável.
-- **Elemento (`__element`)**: Parte integrante de um bloco, ligada por dois sublinhados (`__`).
-- **Modificador (`--modifier`)**: Variação visual ou comportamental de um bloco/elemento, ligada por dois hífens (`--`).
-
-### Exemplos Reais do Projeto:
 ```html
-<!-- Bloco: catalogo-card | Modificador: catalogo-card--destaque -->
-<article class="catalogo-card catalogo-card--destaque">
-  <!-- Elemento: catalogo-card__poster -->
-  <div class="catalogo-card__poster">
-    <img src="poster.jpg" alt="Pôster" class="catalogo-card__imagem">
-  </div>
-  <!-- Elemento: catalogo-card__dados -->
-  <div class="catalogo-card__dados">
+<header class="cabecalho">      <!-- logo + menu -->
+  <nav class="cabecalho__navegacao" aria-label="Navegação principal">…</nav>
+</header>
+<main>…</main>                  <!-- conteúdo da página, dividido em <section> -->
+<footer class="rodape">…</footer>
+```
+
+| Elemento | Onde aparece |
+| --- | --- |
+| `<header>` e `<nav>` | Cabeçalho e menu de todas as páginas; cabeçalho do modal do player |
+| `<main>` | Conteúdo principal de cada página |
+| `<section>` | Banner, cada categoria da Home, temporadas, trailer, elenco, desempenho, recomendações e blocos do Sobre |
+| `<article>` | Cards de filmes e séries, de episódios, de atores e de favoritos |
+| `<footer>` | Rodapé de todas as páginas e créditos do TMDB na página Sobre |
+
+Recursos de acessibilidade usados:
+
+- `aria-label` nos ícones do menu e no campo de pesquisa;
+- `aria-current="page"` no item ativo do menu;
+- `aria-live="polite"` nos resultados da pesquisa e na lista de favoritos, para o leitor de tela anunciar mudanças;
+- `aria-pressed` no botão de favoritar;
+- modal do player com `role="dialog"` e `aria-modal="true"`, que fecha com **Esc**, no **X** ou clicando fora;
+- cards com `tabindex="0"` que abrem com **Enter** ou **Espaço**;
+- `:focus-visible` global com contorno amarelo (`style.css`) e `alt` em todas as imagens.
+
+---
+
+## 🏷️ Metodologia BEM
+
+As classes seguem o padrão **bloco**, **bloco__elemento** e **bloco--modificador**.
+
+| Bloco | Elementos | Modificadores |
+| --- | --- | --- |
+| `cabecalho` | `__logo`, `__navegacao`, `__menu`, `__item`, `__link` | `cabecalho__link--ativo` |
+| `catalogo-card` | `__poster`, `__textos`, `__titulo`, `__dados`, `__ano`, `__avaliacao` | `--movie`, `--tv`, `--resultado`, `--recomendacao` |
+| `detalhe` | `__hero`, `__poster`, `__titulo`, `__meta`, `__generos`, `__sinopse`, `__acoes`, `__btn` | `detalhe__btn--principal`, `detalhe__btn--favorito`, `detalhe-btn--favorito-ativo` |
+| `favorito-card` | `__link`, `__poster`, `__titulo`, `__dados`, `__ano`, `__avaliacao`, `__remover` | — |
+| `favoritos-grid` | — | `favoritos-grid--vazio` |
+| `player-modal` | `__backdrop`, `__dialogo`, `__cabecalho`, `__titulos`, `__titulo`, `__subtitulo`, `__fechar`, `__corpo`, `__iframe` | — |
+| `rodape` | `__texto`, `__aviso` | — |
+
+Exemplo real do card da Home (`js/app.js`):
+
+```html
+<article class="catalogo-card catalogo-card--movie" tabindex="0" role="button">
+  <div class="catalogo-card__poster"><img src="…" alt="Pôster de Interestelar"></div>
+  <div class="catalogo-card__textos">
     <div class="catalogo-card__titulo">Interestelar</div>
-    <div class="catalogo-card__ano">2014</div>
-    <span class="catalogo-card__avaliacao">★ 8.7</span>
+  </div>
+  <div class="catalogo-card__dados">
+    <span class="catalogo-card__ano">2014</span>
+    <span class="catalogo-card__avaliacao">★ 8.4</span>
   </div>
 </article>
+```
 
-<!-- Bloco: detalhe | Elemento: detalhe__btn | Modificador: detalhe__btn--principal -->
-<button class="detalhe__btn detalhe__btn--principal" id="detalhe-assistir-btn">
-  <i class="fa-solid fa-play"></i> Assistir
-</button>
+> **Observação:** algumas classes da primeira versão (`.header`, `.filme`, `.serie`, `.ativo`, `.hidden`) foram mantidas junto das classes BEM porque os scripts ainda as usam. Isso está comentado no `style.css`.
+
+---
+
+## ↔️ Flexbox
+
+O Flexbox organiza os alinhamentos em uma direção. Todas as propriedades pedidas no trabalho aparecem: `display: flex`, `flex-direction`, `justify-content`, `align-items`, `flex-wrap` e `gap`.
+
+| Área | Arquivo · seletor | Propriedades |
+| --- | --- | --- |
+| Estrutura da página (rodapé sempre embaixo) | `style.css` · `.container-principal` | `display: flex`, `flex-direction: column` |
+| Cabeçalho: logo de um lado, menu do outro | `style.css` · `.cabecalho` | `justify-content: space-between`, `align-items: center`, `gap: 24px` |
+| Menu de navegação | `style.css` · `.header-menu` / `.cabecalho__menu` | `align-items: center`, `justify-content: flex-end`, `gap: 10px` |
+| Trilhos de cards da Home (rolagem lateral) | `style.css` · `.filmes-container`, `.series-container` | `flex-wrap: nowrap`, `gap: 15px`, `overflow-x: auto`, `scroll-snap-type` |
+| Linha de ano e nota dos cards | `style.css` · `.card-dados` | `justify-content: space-between`, `align-items: center` |
+| Rodapé | `style.css` · `.rodape` | `flex-direction: column`, `align-items: center` |
+| Barra de pesquisa | `style.css` · `.pesquisa-form` | `align-items: center`, `gap: 12px`; input com `flex: 1` |
+| Hero dos detalhes (pôster + textos) | `detalhes.css` · `.detalhe__hero-conteudo` | `align-items: flex-end`, `gap: 32px` |
+| Botões Assistir e Favoritos | `detalhes.css` · `.detalhe__acoes` | `flex-wrap: wrap`, `align-items: center`, `gap: 10px` |
+| Lista de episódios | `detalhes.css` · `.lista-episodios` | `flex-direction: row`, `gap: 16px`, `overflow-x: auto` |
+| Ano e nota dos favoritos | `favoritos.css` · `.favorito-card__dados` | `justify-content: space-between` |
+
+---
+
+## 🔲 CSS Grid Layout
+
+O Grid organiza os cards em linhas e colunas ao mesmo tempo.
+
+| Área | Arquivo · seletor | Propriedades |
+| --- | --- | --- |
+| Resultados da pesquisa (até 20 cards) | `style.css` · `.pesquisa-grid` | `display: grid`, `grid-template-columns: repeat(auto-fit, minmax(135px, 1fr))`, `gap: 22px 16px` |
+| Grade de favoritos | `favoritos.css` · `.favoritos-grid` | `grid-template-columns: repeat(auto-fill, minmax(145px, 1fr))`, `gap: 22px 16px` |
+| Mensagem de lista vazia (posicionamento explícito) | `favoritos.css` · `.favoritos-vazio` | `grid-column: 1 / -1`, ocupa da primeira à última coluna |
+| Lista de recursos do Sobre | `sobre.css` · `.sobre-lista` | `grid-template-columns: repeat(2, minmax(0, 1fr))`, `gap: 11px 35px` |
+
+```css
+/* style.css: o navegador calcula quantas colunas cabem */
+.pesquisa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 22px 16px;
+}
+
+/* favoritos.css: a mensagem ocupa a linha inteira da grade */
+.favoritos-vazio {
+  grid-column: 1 / -1;
+}
 ```
 
 ---
 
-## 6. Aplicação de Flexbox
-O Flexbox foi implementado em diversas seções do projeto para alinhamento, distribuição e controle de fluxo unidimensional.
+## 📱 Responsividade e Media Queries
 
-### Áreas de Destaque:
-1. **Cabeçalho e Menu de Navegação (`css/style.css`)**:
-   Distribui logotipo, links institucionais e ações em linha com alinhamento vertical centralizado.
-   ```css
-   .cabecalho-container,
-   .cabecalho__container {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     gap: 20px;
-   }
-   .menu,
-   .cabecalho__menu {
-     display: flex;
-     align-items: center;
-     gap: 25px;
-     list-style: none;
-   }
-   ```
-2. **Dados e Textos dos Cards de Conteúdo (`css/style.css`)**:
-   Organiza título, ano e classificação com `flex-direction: column` e distribuição espaçada.
-   ```css
-   .card-dados,
-   .catalogo-card__dados {
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
-     gap: 8px;
-     flex-grow: 1;
-   }
-   ```
-3. **Barra de Ações e Cabeçalho do Player Modal (`css/detalhes.css`)**:
-   Agrupa botões de reprodução/favoritos e título/botão de fechar do modal.
-   ```css
-   .detalhe-acoes,
-   .detalhe__acoes {
-     display: flex;
-     gap: 15px;
-     flex-wrap: wrap;
-     align-items: center;
-   }
-   .player-modal__cabecalho {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     gap: 15px;
-   }
-   ```
+O site foi testado em **375 px** (celular), **768 px** (tablet) e **1366 px** (computador), sem rolagem horizontal, textos cortados ou elementos sobrepostos.
 
-*Propriedades aplicadas:* `display: flex`, `flex-direction`, `justify-content`, `align-items`, `flex-wrap` e `gap`.
+| Arquivo | Breakpoints | O que muda |
+| --- | --- | --- |
+| `style.css` | `min-width: 769px` · `max-width: 768px` · `max-width: 480px` | Margens do cabeçalho e do conteúdo, altura do banner, tamanho dos cards nos trilhos (155 → 140 px) e pesquisa com **2 colunas** no celular |
+| `detalhes.css` | `min-width: 769px` · `max-width: 768px` · `max-width: 480px` | Hero passa de linha para **coluna** (`flex-direction: column`), pôster centralizado, botões com largura total, cabeçalho das temporadas em coluna e modal do player ajustado |
+| `favoritos.css` | `max-width: 768px` · `max-width: 480px` | Cards menores (mínimo de 130 px) e **2 colunas fixas** no celular |
+| `sobre.css` | `max-width: 768px` · `max-width: 480px` | Lista de recursos passa de 2 colunas para **1 coluna**, fontes e espaçamentos menores |
+
+Outros cuidados: `meta viewport` em todas as páginas, `clamp()` nos títulos, `aspect-ratio` em pôsteres e vídeos (2:3 e 16:9) e `img { max-width: 100% }`.
 
 ---
 
-## 7. Aplicação de CSS Grid Layout
-O CSS Grid Layout foi utilizado para estruturar grades bidimensionais complexas e dinâmicas.
+## 🖼️ Capturas de tela
 
-### Áreas de Destaque:
-1. **Grade Principal de Filmes e Séries (`css/style.css`)**:
-   Renderiza a lista de cartões utilizando dimensionamento inteligente e adaptável sem necessidade de quebras manuais:
-   ```css
-   .filmes-grade,
-   .filmes-container {
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-     gap: 25px;
-     width: 100%;
-   }
-   ```
-2. **Grade de Episódios da Série (`css/detalhes.css`)**:
-   Distribui os episódios da temporada selecionada com preenchimento responsivo:
-   ```css
-   .lista-episodios {
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-     gap: 16px;
-   }
-   ```
-3. **Seção de Recursos e Estatísticas (`css/sobre.css` e `css/detalhes.css`)**:
-   Organiza cards de métricas e tecnologias com colunas bem definidas:
-   ```css
-   .detalhe-desempenho {
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     gap: 20px;
-   }
-   ```
-
-*Propriedades aplicadas:* `display: grid`, `grid-template-columns`, `gap`, `repeat()`, `minmax()`, `auto-fill`/`auto-fit` e posicionamento por colunas.
-
----
-
-## 8. Responsividade e Media Queries
-O site se adapta com precisão a smartphones, tablets e computadores desktop. Foram implementados blocos `@media screen` abrangendo os seguintes cenários de uso:
-
-- **Mobile (375 px)**: Ajuste do menu para formato empilhado/compacto, cards com dimensionamento proporcional, reorganização vertical do hero e modal de reprodução com layout adaptado sem rolagem horizontal indevida.
-- **Tablet (768 px)**: Transição dinâmica de colunas do grid (2 a 3 colunas), ajuste do formulário de filtros e redimensionamento balanceado do banner principal.
-- **Desktop (1366 px e superior)**: Aproveitamento total da largura com contêineres limitados (`max-width: 1280px`), grid com 5 a 6 colunas e banners panorâmicos.
-
-### Principais Breakpoints:
-- `@media screen and (max-width: 1024px)`: Ajustes para laptops e tablets na horizontal.
-- `@media screen and (max-width: 768px)`: Reorganização da navegação, abas e grades.
-- `@media screen and (max-width: 480px)` e `375px`: Adequação rigorosa para celulares (sem overflow horizontal, tipografia ajustada e áreas de toque confortáveis).
-
----
-
-## 9. Capturas de Tela
-
-Abaixo estão as capturas de tela reais da tela de detalhes da aplicação nos três tamanhos de tela avaliados:
-
-| Desktop (1366 px) | Tablet (768 px) | Smartphone (375 px) |
+| Computador (1366 px) | Tablet (768 px) | Celular (375 px) |
 | :---: | :---: | :---: |
-| ![Desktop 1366px](img/screenshots/desktop-1366.png) | ![Tablet 768px](img/screenshots/tablet-768.png) | ![Smartphone 375px](img/screenshots/mobile-375.png) |
+| ![Captura em 1366 px](img/screenshots/desktop-1366.png) | ![Captura em 768 px](img/screenshots/tablet-768.png) | ![Captura em 375 px](img/screenshots/mobile-375.png) |
 
 ---
 
-## 10. Diferenciais Técnicos (APIs e Persistência)
-O projeto conta com integração real e funcional a APIs externas e sistema de persistência local:
+## 🔌 APIs e persistência (ponto extra)
 
-1. **The Movie Database (TMDB API v3)**:
-   - Consumo de endpoints para títulos em alta (`/trending/all/week`), filmes populares (`/movie/popular`), mais votados (`/movie/top_rated`), busca (`/search/multi`), créditos/elenco (`/credits`), trailers (`/videos`) e recomendações (`/recommendations`).
-   - Guia completo de temporadas e episódios de séries (`/tv/{id}/season/{season_number}`).
-2. **API de Streaming & Embed Player (`myembed.biz`)**:
-   - Centralizada em `js/detalhes.js`:
-     - Filmes: `https://myembed.biz/filme/{tmdb_id}`
-     - Séries: `https://myembed.biz/serie/{tmdb_id}/{season}/{episode}`
-   - O botão principal "Assistir" inicia o primeiro episódio da temporada selecionada e atualiza dinamicamente conforme a temporada é alterada.
-   - Cada card de episódio pode ser clicado individualmente para reprodução imediata.
-3. **Web Storage API (LocalStorage)**:
-   - Armazenamento local da Chave da API TMDB.
-   - Gerenciamento completo de favoritos (adicionar, remover, consultar e limpar lista).
+### TMDB (The Movie Database)
+
+Todos os dados vêm da API v3 do TMDB, em português (`language=pt-BR`). As chamadas de cada página são feitas em paralelo com `Promise.all`.
+
+| Uso | Endpoint |
+| --- | --- |
+| Banner (em alta na semana) | `/trending/all/week` |
+| Categorias da Home | `/movie/popular`, `/tv/popular`, `/movie/now_playing`, `/discover/movie` (por gênero) |
+| Pesquisa | `/search/multi` |
+| Ficha do título | `/{movie ou tv}/{id}` |
+| Elenco, trailer e recomendações | `/credits`, `/videos`, `/recommendations` |
+| Episódios de uma temporada | `/tv/{id}/season/{número}` |
+
+Os trailers são exibidos pelo `youtube-nocookie.com`.
+
+### Player (MyEmbed)
+
+O endereço do player fica centralizado no objeto `PLAYER_API`, em `js/detalhes.js`:
+
+```js
+const PLAYER_API = {
+  filme: (tmdbId) => `https://myembed.biz/filme/${tmdbId}`,
+  serie: (tmdbId, season, episode) => `https://myembed.biz/serie/${tmdbId}/${season}/${episode}`,
+};
+```
+
+- **Filme:** o botão **Assistir** abre o modal com o filme.
+- **Série:** o botão **Assistir** abre o primeiro episódio da temporada escolhida no seletor, e cada card de episódio abre o player direto naquele episódio.
+
+### LocalStorage
+
+| Chave | O que guarda |
+| --- | --- |
+| `mastercine_favoritos` | Lista em JSON com `id`, `type`, `title`, `poster`, `year` e `vote_average` de cada favorito |
+| `mastercine_tmdb_api_key` | Chave da API do TMDB informada pelo usuário |
+
+O botão de favoritar fica na página de Detalhes e alterna entre **Adicionar** e **Remover dos favoritos**. A página Favoritos lê a mesma chave, e a leitura usa `try/catch` para não quebrar caso o JSON esteja corrompido.
+
+### Segurança
+
+Todo texto que vem da API passa pela função `escapeHTML` antes de entrar no HTML, para evitar a execução de código malicioso (XSS).
 
 ---
 
-## 11. Como Executar o Projeto
+## ▶️ Como executar
 
-1. **Clone o repositório:**
+**Online:** acesse [mastercine-three.vercel.app](https://mastercine-three.vercel.app).
+
+**Localmente:**
+
+1. Clone o repositório:
    ```bash
    git clone https://github.com/yjtank/mastercine.git
-   ```
-2. **Acesse a pasta do projeto:**
-   ```bash
    cd mastercine
    ```
-3. **Abra o projeto:**
-   - Abra a pasta raiz no **VS Code**.
-   - Utilize a extensão **Live Server** (clique com o botão direito em `index.html` e selecione *Open with Live Server*) ou abra diretamente o arquivo `index.html` em qualquer navegador web.
-4. **Configuração da Chave da API TMDB:**
-   - Ao acessar a página pela primeira vez, caso não haja chave salva, clique no botão **"Chave TMDB"** no cabeçalho ou insira sua chave da API v3 do TMDB para carregar os dados em tempo real.
-   - A chave fica salva no `localStorage` do seu navegador para acessos futuros.
+2. Abra a pasta no VS Code e rode o `index.html` com a extensão **Live Server** (ou abra o arquivo direto no navegador).
+3. No primeiro acesso, o site pede a **chave da API v3 do TMDB**. Ela pode ser criada de graça em [themoviedb.org](https://www.themoviedb.org/settings/api) e fica salva no navegador.
+
+---
+
+<p align="center">
+  Este produto utiliza a API do TMDB, mas não é endossado ou certificado pelo TMDB.<br>
+  © 2026 MasterCine
+</p>
