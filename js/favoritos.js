@@ -42,7 +42,7 @@ function renderizarFavoritos() {
   if (!favoritos.length) {
     lista.className = "favoritos-grid favoritos-grid--vazio";
     lista.innerHTML =
-      '<div class="favoritos-vazio"><i class="fa-regular fa-heart"></i><strong>Sua lista ainda está vazia</strong><p>Abra um filme ou série e toque em “Adicionar aos favoritos”.</p><a href="index.html">Explorar catálogo</a></div>';
+      '<div class="favoritos-vazio"><i class="fa-regular fa-heart"></i><strong>Sua lista ainda está vazia</strong><p>Abra um filme ou série e toque em “Adicionar aos favoritos”.</p><a href="../index.html">Explorar catálogo</a></div>';
     return;
   }
 

@@ -110,13 +110,17 @@
   </article>`;
   }
 
+  function caminhoPagina(pagina) {
+    return location.pathname.includes("/pages/") ? pagina : `pages/${pagina}`;
+  }
+
   function ativarCards(raiz = document) {
     raiz.querySelectorAll(".filme,.serie").forEach((card) => {
       if (card.dataset.evento) return;
       card.dataset.evento = "1";
       const abrir = () => {
         if (!card.dataset.id) return;
-        window.location.href = `detalhes.html?id=${encodeURIComponent(card.dataset.id)}&type=${encodeURIComponent(card.dataset.tipo || "movie")}`;
+        window.location.href = `${caminhoPagina("detalhes.html")}?id=${encodeURIComponent(card.dataset.id)}&type=${encodeURIComponent(card.dataset.tipo || "movie")}`;
       };
       card.addEventListener("click", abrir);
       card.addEventListener("keydown", (e) => {
@@ -180,7 +184,7 @@
         container.querySelector(".barra-progresso"),
       );
       slide.querySelector("[data-id]").addEventListener("click", () => {
-        window.location.href = `detalhes.html?id=${encodeURIComponent(item.id)}&type=${encodeURIComponent(item.media_type === "tv" ? "tv" : "movie")}`;
+        window.location.href = `${caminhoPagina("detalhes.html")}?id=${encodeURIComponent(item.id)}&type=${encodeURIComponent(item.media_type === "tv" ? "tv" : "movie")}`;
       });
     });
     const controles = document.createElement("div");
@@ -305,7 +309,7 @@
         : '<p class="estado">Nenhum resultado encontrado.</p>';
       results.querySelectorAll(".resultado-item").forEach((item) =>
         item.addEventListener("click", () => {
-          window.location.href = `detalhes.html?id=${encodeURIComponent(item.dataset.id)}&type=${encodeURIComponent(item.dataset.tipo)}`;
+          window.location.href = `${caminhoPagina("detalhes.html")}?id=${encodeURIComponent(item.dataset.id)}&type=${encodeURIComponent(item.dataset.tipo)}`;
         }),
       );
     } catch (error) {
@@ -344,7 +348,7 @@
         event.preventDefault();
         const query = input.value.trim();
         if (query.length >= 2)
-          window.location.href = `pesquisa.html?q=${encodeURIComponent(query)}`;
+          window.location.href = `${caminhoPagina("pesquisa.html")}?q=${encodeURIComponent(query)}`;
       }
     });
     backdrop.addEventListener("click", fechar);
